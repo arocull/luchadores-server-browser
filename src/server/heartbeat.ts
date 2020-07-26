@@ -1,5 +1,7 @@
 import { Express } from 'express';
 
+import logger from './logger';
+
 interface HeartbeatData {
   title: string;
   address: string;
@@ -22,7 +24,7 @@ class Heartbeat {
       Object.entries(this.heartbeats)
         .filter(entry => entry[1].timestamp <= cutoff)
         .forEach(entry => {
-          console.log('Sweeping server entry with cutoff', cutoff, ':', entry);
+          logger.debug('Sweeping server entry: %s @ %s', entry[1].title, entry[1].address);
           delete this.heartbeats[entry[0]];
         });
     }, 10 * 1000);
@@ -33,15 +35,19 @@ class Heartbeat {
     app.post('/heartbeat', (req, res) => {
       Promise.resolve()
         .then(() => {
-          console.log('Heartbeat body', req.body);
+          logger.silly('Heartbeat body', req.body);
           return this.parseHeartbeat(req.body);
         })
         .then(data => {
+          if (!this.heartbeats[data.address]) {
+            logger.info('New server added: %s @ %s', data.title, data.address);
+          }
           this.heartbeats[data.address] = data;
+          logger.silly('New heartbeat list: %j', this.heartbeats);
           res.status(204).send();
-          console.log('New heartbeat list:', this.heartbeats);
         })
         .catch(err => {
+          logger.error('Heartbeat endpoint error: %j', err);
           res.status(400).send((err as Error).message);
         });
     });

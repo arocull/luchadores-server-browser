@@ -16,16 +16,16 @@ class Heartbeat {
   private heartbeats: HeartbeatMap = {};
 
   constructor() {
-    // Every minute sweep servers we haven't heard from recently
+    // Every interval, sweep servers we haven't heard from recently
     setInterval(() => {
-      const cutoff = Date.now() - (60 * 2 * 1000);
+      const cutoff = Date.now() - (30 * 1000);
       Object.entries(this.heartbeats)
         .filter(entry => entry[1].timestamp <= cutoff)
         .forEach(entry => {
           console.log('Sweeping server entry with cutoff', cutoff, ':', entry);
           delete this.heartbeats[entry[0]];
         });
-    }, 60 * 1000);
+    }, 10 * 1000);
   }
 
   // Heartbeat collection endpoint

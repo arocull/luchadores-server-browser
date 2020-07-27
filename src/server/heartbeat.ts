@@ -53,7 +53,7 @@ class Heartbeat {
           res.status(204).send();
         })
         .catch(err => {
-          logger.error('Heartbeat endpoint error: %j', err);
+          logger.error('Heartbeat endpoint error: %o', err);
           res.status(400).send((err as Error).message);
         });
     });

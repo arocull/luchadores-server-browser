@@ -21,8 +21,6 @@ $(function() {
         return getServers();
       })
       .then(data => {
-        console.log('Got server list', data);
-        btnRefresh.removeAttr('disabled');
         tblBody.empty();
         data.forEach(entry => {
           const link = $('<a>').attr('href', entry.address).text(entry.title);
@@ -37,10 +35,21 @@ $(function() {
         });
         if (data.length == 0) {
           const row = $('<tr>');
-          const cell = $('<td>').attr('colspan', 2).text('No servers 😭');
+          const cell = $('<td>').attr('colspan', 2).text('No servers - let the tears flow 😭');
           row.append(cell);
           tblBody.append(row);
         }
+      })
+      .catch(err => {
+        console.error('Error while reloading', err);
+        tblBody.empty();
+        const row = $('<tr>');
+        const cell = $('<td>').attr('colspan', 2).text('Error reloading - try again 😭');
+        row.append(cell);
+        tblBody.append(row);
+      })
+      .then(() => {
+        btnRefresh.removeAttr('disabled');
       });
   }
 

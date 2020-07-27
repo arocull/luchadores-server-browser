@@ -30,9 +30,15 @@ class Heartbeat {
     }, 10 * 1000);
   }
 
-  // Heartbeat collection endpoint
-  handler(app: Express) {
-    app.post('/heartbeat', (req, res) => {
+  registerEndpoints(app: Express) {
+    // Heartbeat list endpoint
+    app.get('/list', (req, res): void => {
+      logger.debug('Request to get servers');
+      res.status(200).json(this.getServerList());
+    });
+
+    // Heartbeat collection endpoint
+    app.post('/heartbeat', (req, res): void => {
       Promise.resolve()
         .then(() => {
           logger.silly('Heartbeat body', req.body);
@@ -51,6 +57,10 @@ class Heartbeat {
           res.status(400).send((err as Error).message);
         });
     });
+  }
+
+  getServerList(): HeartbeatData[] {
+    return Object.values(this.heartbeats);
   }
 
   // Parses and validates heartbeat data

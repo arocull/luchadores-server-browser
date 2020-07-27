@@ -8,15 +8,15 @@ const port = 3500;
 const app = express();
 const server = http.createServer(app);
 
-const webRoot = './dist/public';
-logger.info(`Web root is ${webRoot}`);
-
-app.use(express.json());
-app.use(express.static(webRoot));
-
 // Configure heartbeat handler
 const heartbeat = new Heartbeat();
-heartbeat.handler(app);
+heartbeat.registerEndpoints(app);
+
+// Configure the rest of express
+const webRoot = './dist/public';
+logger.info(`Web root is ${webRoot}`);
+app.use(express.json());
+app.use(express.static(webRoot));
 
 server.listen(port);
 logger.info(`Server started on port ${port}`);

@@ -60,7 +60,26 @@ class Heartbeat {
   }
 
   getServerList(): HeartbeatData[] {
-    return Object.values(this.heartbeats);
+    const all = Object.values(this.heartbeats);
+    // I always forget how sort functions work...
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Description
+    // - If (a, b) returns -1, a comes first
+    // - If (a, b) returns 1, b comes first
+    // - (a, b) must always return the same value when given
+    //    a specific pair of elements a and b as its two arguments.
+    //    Otherwise, order is undefined.
+    const free = all.filter(x => x.playerCount < x.playerCapacity);
+    const full = all.filter(x => x.playerCount >= x.playerCapacity);
+    const fnCompare = (a: HeartbeatData, b: HeartbeatData) => {
+      if (a.playerCount > b.playerCount) return -1;
+      if (b.playerCount > a.playerCount) return 1;
+      return a.title.localeCompare(b.title); // only when equal
+    };
+    free.sort(fnCompare);
+    full.sort(fnCompare);
+    const merged = free.concat(full);
+
+    return merged;
   }
 
   // Parses and validates heartbeat data

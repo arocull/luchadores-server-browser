@@ -1,5 +1,6 @@
 // 😭 but my global scope 😭
 // Temporary hacks because I'm too lazy/scared to setup webpack
+// TODO: set up OnLoad in JS
 $(function() {
   const btnRefresh = $('#btn-refresh');
   const tblBody = $('#tbl-main > tbody');
@@ -35,7 +36,7 @@ $(function() {
         });
         if (data.length == 0) {
           const row = $('<tr>');
-          const cell = $('<td>').attr('colspan', 2).text('No servers - let the tears flow 😭');
+          const cell = $('<td>').attr('colspan', 2).text('No servers - let the tears flow');
           row.append(cell);
           tblBody.append(row);
         }
@@ -44,7 +45,7 @@ $(function() {
         console.error('Error while reloading', err);
         tblBody.empty();
         const row = $('<tr>');
-        const cell = $('<td>').attr('colspan', 2).text('Error reloading - try again 😭');
+        const cell = $('<td>').attr('colspan', 2).text('Error reloading - try again');
         row.append(cell);
         tblBody.append(row);
       })

@@ -1,0 +1,14 @@
+/* Grassy Arena Colors:
+* Water Puddle: #509eab rgb(80, 158, 171)
+* Dark Grass: #0e542f rgb(14, 84, 47)
+*/
+
+body {
+    background-color: #0e542f;
+    background-image: linear-gradient(to bottom, rgba(80, 158, 171, 0), rgba(14, 84, 47, 1)), url(../../images/background/grass.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+    background-attachment: scroll;
+}

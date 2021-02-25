@@ -1,7 +1,7 @@
 body {
     background-color: #eeaa11;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    font-size: 16pt;
+    font-size: 14pt;
 }
 
 h1 {
@@ -17,13 +17,33 @@ h3 {
     font-family: 'Flamenco', cursive;
     font-size: 18pt;
 }
+p {
+    padding: 0 15px 0 15px;
+    text-align: justify;
+    text-align-last: left;
+    text-indent: 2em;
+}
 
 button {
     border-radius: 6px;
     background-color: #646464;
     color: #ffffff;
-    width: 24em;
-    height: 2em;
+    font-size: 20pt;
+    font-weight: bold;
+    max-width: 12em;
+    max-height: 5em;
+    width: auto;
+    height: auto;
+
+    border-color: #444444;
+}
+button:hover {
+    background-color: #999999;
+    border-color: #666666;
+}
+button:active {
+    background-color: #55b1b1;
+    border-color: #009090;
 }
 
 img.logo {
@@ -71,4 +91,8 @@ div.container {
     h2 { font-size: 16pt; }
     h3 { font-size: 14pt; }
     body { font-size: 12pt; }
+}
+/* Widescreen */
+@media (min-width: 1000px) {
+    div.container { max-width: 900px; }
 }

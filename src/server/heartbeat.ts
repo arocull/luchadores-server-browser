@@ -83,6 +83,7 @@ class Heartbeat {
   }
 
   // Parses and validates heartbeat data
+  // TODO: Will this break the server browser if a Luchadores server sends an invalid heartbeat?
   private parseHeartbeat(data: any): HeartbeatData {
     if (data == null) {
       throw new Error('Empty data provided');

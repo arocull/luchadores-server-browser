@@ -80,6 +80,20 @@ div.container {
     padding-bottom: 3vmin;
 }
 
+h3.tbl-header {
+    font-weight: bold;
+    font-size: 24pt;
+    text-align: left;
+    margin-bottom: 0;
+    margin-left: 10%;
+    margin-right: 0;
+}
+button.tbl-refresh {
+    float: right;
+    margin-bottom: 0;
+    margin-right: 10%;
+    margin-left: 0;
+}
 #tbl-main {
     border-color: black;
     border-width: 3;

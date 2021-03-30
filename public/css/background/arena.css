@@ -6,10 +6,15 @@
 /* Create red background, and overlay an image on it, that is also overlayed with a gradient */
 body {
     background-color: #7f0000;
-    background-image: linear-gradient(to bottom, rgba(254, 167, 17, 0), rgba(127, 0, 0, 1)), url(../../images/background/arena.jpg);
+    /*background-image: linear-gradient(to bottom, rgba(254, 167, 17, 0), rgba(127, 0, 0, 1)), url(../../images/background/arena.jpg);*/
+    background-image: url(../../images/background/arena-gradient.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: top;
     background-attachment: scroll;
+}
+
+em {
+    color: #7f0000;
 }

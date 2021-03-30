@@ -5,10 +5,15 @@
 
 body {
     background-color: #0e542f;
-    background-image: linear-gradient(to bottom, rgba(80, 158, 171, 0), rgba(14, 84, 47, 1)), url(../../images/background/grass.jpg);
+    /*background-image: linear-gradient(to bottom, rgba(80, 158, 171, 0), rgba(14, 84, 47, 1)), url(../../images/background/grass.jpg);*/
+    background-image: url(../../images/background/grass-gradient.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: top;
     background-attachment: scroll;
+}
+
+em {
+    color: #0e542f;
 }

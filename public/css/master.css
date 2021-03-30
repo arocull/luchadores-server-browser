@@ -23,6 +23,12 @@ p {
     text-align-last: left;
     text-indent: 2em;
 }
+em {
+    font-family: 'Flamenco', cursive;
+    font-weight: bold;
+    font-size: 150%;
+    line-height: 75%;
+}
 
 button {
     border-radius: 6px;

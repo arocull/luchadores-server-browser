@@ -2,6 +2,8 @@
 
 The server to see all the other servers. Who watches the watchers?
 
+This server creates a client-accessible list of all running Luchadores servers that report to it.
+
 ## Hosting
 To build the project, run:
 

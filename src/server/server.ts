@@ -4,7 +4,7 @@ import http from 'http';
 import logger from './logger';
 import Heartbeat from './heartbeat';
 
-const port = 3500;
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3500;
 const app = express();
 const server = http.createServer(app);
 

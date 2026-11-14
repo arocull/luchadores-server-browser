@@ -30,6 +30,7 @@ Start the server and watch your browser:
 
 ```
 npm run start           # Builds and runs the server.
+PORT=4000 npm run start # Override the default port
 ```
 
 It listens on a fixed port (default is `3500`); browse to `http://localhost:3500/` from a client.
